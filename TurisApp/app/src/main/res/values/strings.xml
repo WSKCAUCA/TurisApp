@@ -14,4 +14,5 @@
     <string name="title_activity_hoteles_map">Map</string>
     <string name="title_activity_restaurantes_map">Map</string>
     <string name="title_activity_sitios_map">Map</string>
+    <string name="mensaje">La guia turística que te da la información y la ruta del lugar que has elegido</string>
 </resources>

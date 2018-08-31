@@ -19,16 +19,18 @@ import android.view.MenuItem;
 
 import com.caucaragp.worldskills.turisapp.R;
 import com.caucaragp.worldskills.turisapp.fragments.HotelesFragment;
+import com.caucaragp.worldskills.turisapp.fragments.InicioFragment;
 import com.caucaragp.worldskills.turisapp.fragments.RestaurantesFragment;
 import com.caucaragp.worldskills.turisapp.fragments.SitiosFragment;
 import com.caucaragp.worldskills.turisapp.models.Lugares;
+import com.caucaragp.worldskills.turisapp.models.Utilities;
 
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     public static Lugares lugar = new Lugares();
-    String nombre ="Inicio";
+
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -49,6 +51,11 @@ public class MenuT extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
         navigationView.setItemTextColor(ColorStateList.valueOf(getColor(R.color.cafe)));
+        getSupportActionBar().setTitle(Utilities.nombre);
+        if (Utilities.inicio==0){
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,new InicioFragment()).commit();
+            Utilities.inicio=1;
+        }
     }
 
     @Override
@@ -92,25 +99,25 @@ public class MenuT extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
 
-            nombre = "Inicio";
-            getSupportActionBar().setTitle(nombre);
-
+            Utilities.nombre = "Inicio";
+            getSupportActionBar().setTitle(Utilities.nombre);
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,new InicioFragment()).commit();
             //getActionBar().setTitle("Inicio");
 
         } else if (id == R.id.nav_gallery) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            nombre = "Hoteles";
-            getSupportActionBar().setTitle(nombre);
+            Utilities.nombre = "Hoteles";
+            getSupportActionBar().setTitle(Utilities.nombre);
 
 
         } else if (id == R.id.nav_slideshow) {
             fragment = new RestaurantesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            nombre = "Restaurantes";
-            getSupportActionBar().setTitle(nombre);
+            Utilities.nombre = "Restaurantes";
+            getSupportActionBar().setTitle(Utilities.nombre);
 
 
         } else if (id == R.id.nav_slideshow) {
@@ -121,8 +128,8 @@ public class MenuT extends AppCompatActivity
             fragment = new SitiosFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            nombre = "Sitios";
-            getSupportActionBar().setTitle(nombre);
+            Utilities.nombre = "Sitios";
+            getSupportActionBar().setTitle(Utilities.nombre);
 
         }
 
