@@ -15,14 +15,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
-public class HotelesMap extends FragmentActivity implements OnMapReadyCallback {
+public class RestaurantesMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hoteles_map);
+        setContentView(R.layout.activity_restaurantes_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -44,8 +44,7 @@ public class HotelesMap extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-
-        List<Lugares> lugaresList = Splash.listaLugares.subList(5,10);
+        List<Lugares> lugaresList = Splash.listaLugares.subList(10,15);
 
         for (int i=0;i<lugaresList.size();i++){
             Lugares lugar = lugaresList.get(i);
