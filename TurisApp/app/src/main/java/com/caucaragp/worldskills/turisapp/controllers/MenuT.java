@@ -84,21 +84,21 @@ public class MenuT extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
 
-            getActionBar().setTitle("Inicio");
+            //getActionBar().setTitle("Inicio");
 
         } else if (id == R.id.nav_gallery) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            getActionBar().setTitle("Hoteles");
+            //getActionBar().setTitle("Hoteles");
 
         } else if (id == R.id.nav_slideshow) {
 
-            getActionBar().setTitle("Restaurantes");
+            //getActionBar().setTitle("Restaurantes");
 
         } else if (id == R.id.nav_manage) {
 
-            getActionBar().setTitle("Sitios");
+            //getActionBar().setTitle("Sitios");
 
         } else if (id == R.id.nav_share) {
 
