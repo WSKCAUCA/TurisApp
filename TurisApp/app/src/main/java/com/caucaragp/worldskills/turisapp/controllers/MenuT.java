@@ -16,9 +16,13 @@ import android.view.MenuItem;
 
 import com.caucaragp.worldskills.turisapp.R;
 import com.caucaragp.worldskills.turisapp.fragments.HotelesFragment;
+import com.caucaragp.worldskills.turisapp.models.Lugares;
 
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static Lugares lugar = new Lugares();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
