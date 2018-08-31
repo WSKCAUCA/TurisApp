@@ -46,7 +46,13 @@
         <activity android:name=".controllers.Detalle" />
         <activity
             android:name=".maps.HotelesMap"
-            android:label="@string/title_activity_hoteles_map"></activity>
+            android:label="@string/title_activity_hoteles_map" />
+        <activity
+            android:name=".maps.RestaurantesMap"
+            android:label="@string/title_activity_restaurantes_map" />
+        <activity
+            android:name=".maps.SitiosMap"
+            android:label="@string/title_activity_sitios_map"></activity>
     </application>
 
 </manifest>

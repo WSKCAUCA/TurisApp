@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.caucaragp.worldskills.turisapp.R;
+import com.caucaragp.worldskills.turisapp.controllers.Detalle;
 import com.caucaragp.worldskills.turisapp.controllers.MenuT;
 import com.caucaragp.worldskills.turisapp.controllers.Splash;
 import com.caucaragp.worldskills.turisapp.maps.HotelesMap;
@@ -70,7 +71,7 @@ public class HotelesFragment extends Fragment {
     //Método para ingresar el adapter al
     private void inputAdapter() {
         position=getActivity().getWindowManager().getDefaultDisplay().getRotation();
-        List<Lugares> lugaresList = Splash.listaLugares.subList(0,5);
+        final List<Lugares> lugaresList = Splash.listaLugares.subList(0,5);
         if (position== Surface.ROTATION_0 || position==Surface.ROTATION_180){
             if (modo==1){
                 item = R.layout.item_list;
@@ -81,8 +82,9 @@ public class HotelesFragment extends Fragment {
                 adapterT.setOnItemClickListener(new AdapterT.OnItemClickListener() {
                     @Override
                     public void itemClick(int position) {
-                        MenuT.lugar = Splash.listaLugares.get(position);
-
+                        MenuT.lugar = lugaresList.get(position);
+                        Intent intent = new Intent(getContext(), Detalle.class);
+                        startActivity(intent);
                     }
                 });
             }else {
@@ -94,8 +96,9 @@ public class HotelesFragment extends Fragment {
                 adapterT.setOnItemClickListener(new AdapterT.OnItemClickListener() {
                     @Override
                     public void itemClick(int position) {
-                        MenuT.lugar = Splash.listaLugares.get(position);
-
+                        MenuT.lugar = lugaresList.get(position);
+                        Intent intent = new Intent(getContext(), Detalle.class);
+                        startActivity(intent);
                     }
                 });
             }
@@ -109,7 +112,7 @@ public class HotelesFragment extends Fragment {
                 @Override
                 public void itemClick(int position) {
                     entrar=1;
-                    MenuT.lugar = Splash.listaLugares.get(position);
+                    MenuT.lugar = lugaresList.get(position);
                     TextView txtDescripcion = view.findViewById(R.id.txtDescripcionLand);
                     txtDescripcion.setText(MenuT.lugar.getDescripcion());
                     ImageView imgLand = view.findViewById(R.id.imgLand);

@@ -19,6 +19,8 @@ import android.view.MenuItem;
 
 import com.caucaragp.worldskills.turisapp.R;
 import com.caucaragp.worldskills.turisapp.fragments.HotelesFragment;
+import com.caucaragp.worldskills.turisapp.fragments.RestaurantesFragment;
+import com.caucaragp.worldskills.turisapp.fragments.SitiosFragment;
 import com.caucaragp.worldskills.turisapp.models.Lugares;
 
 public class MenuT extends AppCompatActivity
@@ -26,6 +28,7 @@ public class MenuT extends AppCompatActivity
 
 
     public static Lugares lugar = new Lugares();
+    String nombre ="Inicio";
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -89,8 +92,8 @@ public class MenuT extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
 
-
-            getSupportActionBar().setTitle("Inicio");
+            nombre = "Inicio";
+            getSupportActionBar().setTitle(nombre);
 
             //getActionBar().setTitle("Inicio");
 
@@ -98,27 +101,28 @@ public class MenuT extends AppCompatActivity
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
+            nombre = "Hoteles";
+            getSupportActionBar().setTitle(nombre);
 
-            getSupportActionBar().setTitle("Hoteles");
+
+        } else if (id == R.id.nav_slideshow) {
+            fragment = new RestaurantesFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            nombre = "Restaurantes";
+            getSupportActionBar().setTitle(nombre);
 
 
         } else if (id == R.id.nav_slideshow) {
 
-            getSupportActionBar().setTitle("Restaurantes");
-
-            //getActionBar().setTitle("Hoteles");
-
-        } else if (id == R.id.nav_slideshow) {
-
-            //getActionBar().setTitle("Restaurantes");
-
-
-       //getActionBar().setTitle("Sitios");
 
 
         } else if (id == R.id.nav_manage) {
+            fragment = new SitiosFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            getSupportActionBar().setTitle("Sitios");
+            nombre = "Sitios";
+            getSupportActionBar().setTitle(nombre);
 
         }
 
