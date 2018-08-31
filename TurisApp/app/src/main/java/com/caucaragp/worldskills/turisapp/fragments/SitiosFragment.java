@@ -72,7 +72,7 @@ public class SitiosFragment extends Fragment {
     //Método para ingresar el adapter al
     private void inputAdapter() {
         position=getActivity().getWindowManager().getDefaultDisplay().getRotation();
-        List<Lugares> lugaresList = Splash.listaLugares.subList(0,4);
+        List<Lugares> lugaresList = Splash.listaLugares.subList(5,10);
         if (position== Surface.ROTATION_0 || position==Surface.ROTATION_180){
             if (modo==1){
                 item = R.layout.item_list;
