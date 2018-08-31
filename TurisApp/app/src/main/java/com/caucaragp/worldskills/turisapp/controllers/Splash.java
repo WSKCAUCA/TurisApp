@@ -65,7 +65,6 @@ public class Splash extends AppCompatActivity {
             Gson gson = new Gson();
             Type type = new TypeToken<List<Lugares>>(){}.getType();
             listaLugares = gson.fromJson(json,type);
-            Toast.makeText(this, ""+listaLugares.get(0).getNombre(), Toast.LENGTH_SHORT).show();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

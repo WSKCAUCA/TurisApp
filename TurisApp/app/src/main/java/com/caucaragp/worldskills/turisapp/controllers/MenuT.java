@@ -89,11 +89,15 @@ public class MenuT extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
 
+
             getSupportActionBar().setTitle("Inicio");
+
+            //getActionBar().setTitle("Inicio");
 
         } else if (id == R.id.nav_gallery) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
 
             getSupportActionBar().setTitle("Hoteles");
 
@@ -102,6 +106,14 @@ public class MenuT extends AppCompatActivity
 
             getSupportActionBar().setTitle("Restaurantes");
 
+            //getActionBar().setTitle("Hoteles");
+
+        } else if (id == R.id.nav_slideshow) {
+
+            //getActionBar().setTitle("Restaurantes");
+
+
+       //getActionBar().setTitle("Sitios");
 
 
         } else if (id == R.id.nav_manage) {

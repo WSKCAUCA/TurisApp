@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HotelesFragment extends Fragment {
+public class SitiosFragment extends Fragment {
     //Declaración de variables
     RecyclerView recyclerView;
     FloatingActionButton btnMapa;
@@ -41,15 +41,17 @@ public class HotelesFragment extends Fragment {
     SharedPreferences preferences;
     View view;
     int entrar=0;
-    public HotelesFragment() {
+
+    public SitiosFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_hoteles, container, false);
+        view = inflater.inflate(R.layout.fragment_sitios, container, false);
         inizialite();
         inputAdapter();
         escuchaBoton();
@@ -70,7 +72,7 @@ public class HotelesFragment extends Fragment {
     //Método para ingresar el adapter al
     private void inputAdapter() {
         position=getActivity().getWindowManager().getDefaultDisplay().getRotation();
-        List<Lugares> lugaresList = Splash.listaLugares.subList(0,5);
+        List<Lugares> lugaresList = Splash.listaLugares.subList(0,4);
         if (position== Surface.ROTATION_0 || position==Surface.ROTATION_180){
             if (modo==1){
                 item = R.layout.item_list;
@@ -139,4 +141,5 @@ public class HotelesFragment extends Fragment {
             }
         });
     }
+
 }
