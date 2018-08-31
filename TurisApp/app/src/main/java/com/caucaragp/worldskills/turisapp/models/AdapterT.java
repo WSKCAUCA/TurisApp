@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.caucaragp.worldskills.turisapp.R;
 
 import org.w3c.dom.Text;
@@ -28,6 +29,17 @@ public class AdapterT extends RecyclerView.Adapter<AdapterT.Holder>{
         void itemClick(int position);
     }
 
+    //Constructor para la creacion de un objeto AdapterT
+    public AdapterT(List<Lugares> lugaresList, int item, Context context) {
+        this.lugaresList = lugaresList;
+        this.item = item;
+        this.context = context;
+    }
+
+    //Método para el ingreso de la variable onItemClickListener
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +50,7 @@ public class AdapterT extends RecyclerView.Adapter<AdapterT.Holder>{
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-
+        holder.connectData(lugaresList.get(position));
     }
 
     @Override
@@ -62,6 +74,26 @@ public class AdapterT extends RecyclerView.Adapter<AdapterT.Holder>{
                     }
                 }
             });
+        }
+
+        //Método para igresar datos a los items
+        public void connectData(Lugares lugar){
+            Glide.with(context).load(lugar.getUrlimagen()).crossFade().into(imgItem);
+            txtNombre.setText(lugar.getNombre());
+
+            if (item==R.layout.item_list){
+                TextView txtDescripcion = itemView.findViewById(R.id.txtDescripcionItem);
+                TextView txtUbicacion = itemView.findViewById(R.id.txtUbicacionItem);
+
+                txtDescripcion.setText(lugar.getDescripcioncorta());
+                txtUbicacion.setText(lugar.getUbicacion());
+            }
+
+            if (item==R.layout.item_grid){
+                TextView txtUbicacion = itemView.findViewById(R.id.txtUbicacionItem);
+                txtUbicacion.setText(lugar.getUbicacion());
+            }
+
         }
     }
 }

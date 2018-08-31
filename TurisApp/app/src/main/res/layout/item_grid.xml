@@ -23,7 +23,7 @@
         android:layout_width="150dp"
         android:layout_height="91dp"
         android:layout_marginTop="108dp"
-        app:cardBackgroundColor="#45000000"
+        app:cardBackgroundColor="@color/transparente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,12 +42,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/cardview_light_background"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtUbicacionItem"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="8dp"
@@ -55,6 +57,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/cardview_light_background"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

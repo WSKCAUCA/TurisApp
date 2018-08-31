@@ -19,9 +19,13 @@ import android.view.MenuItem;
 
 import com.caucaragp.worldskills.turisapp.R;
 import com.caucaragp.worldskills.turisapp.fragments.HotelesFragment;
+import com.caucaragp.worldskills.turisapp.models.Lugares;
 
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    public static Lugares lugar = new Lugares();
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -41,7 +45,7 @@ public class MenuT extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
-        navigationView.setItemTextColor(ColorStateList.valueOf(R.color.cafe));
+        navigationView.setItemTextColor(ColorStateList.valueOf(getColor(R.color.cafe)));
     }
 
     @Override
@@ -57,7 +61,7 @@ public class MenuT extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_t, menu);
+      //  getMenuInflater().inflate(R.menu.menu_t, menu);
         return true;
     }
 
@@ -84,20 +88,25 @@ public class MenuT extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
 
-
+            getSupportActionBar().setTitle("Inicio");
 
         } else if (id == R.id.nav_gallery) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
+            getSupportActionBar().setTitle("Hoteles");
+
 
         } else if (id == R.id.nav_slideshow) {
+
+            getSupportActionBar().setTitle("Restaurantes");
 
 
 
         } else if (id == R.id.nav_manage) {
+
+            getSupportActionBar().setTitle("Sitios");
 
         }
 
