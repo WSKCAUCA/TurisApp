@@ -1,5 +1,8 @@
 package com.caucaragp.worldskills.turisapp.controllers;
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +23,7 @@ import com.caucaragp.worldskills.turisapp.fragments.HotelesFragment;
 public class MenuT extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class MenuT extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
+        navigationView.setItemTextColor(ColorStateList.valueOf(R.color.cafe));
     }
 
     @Override
@@ -80,25 +86,18 @@ public class MenuT extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
 
-            getActionBar().setTitle("Inicio");
+
 
         } else if (id == R.id.nav_gallery) {
             fragment = new HotelesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
 
-            getActionBar().setTitle("Hoteles");
 
         } else if (id == R.id.nav_slideshow) {
 
-            getActionBar().setTitle("Restaurantes");
+
 
         } else if (id == R.id.nav_manage) {
-
-            getActionBar().setTitle("Sitios");
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
