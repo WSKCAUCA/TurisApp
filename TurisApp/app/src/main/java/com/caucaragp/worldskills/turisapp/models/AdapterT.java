@@ -58,6 +58,7 @@ public class AdapterT extends RecyclerView.Adapter<AdapterT.Holder>{
         return lugaresList.size();
     }
 
+    //Clase para la creación de los items para el recyclerView
     public class Holder extends RecyclerView.ViewHolder {
         ImageView imgItem = itemView.findViewById(R.id.imgItem);
         TextView txtNombre = itemView.findViewById(R.id.txtNombreItem);
