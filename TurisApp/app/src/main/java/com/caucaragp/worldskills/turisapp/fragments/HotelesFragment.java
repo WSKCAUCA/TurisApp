@@ -45,6 +45,7 @@ public class HotelesFragment extends Fragment {
     int modo;
     int item;
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     View view;
     int entrar=0;
     public HotelesFragment() {
@@ -59,7 +60,6 @@ public class HotelesFragment extends Fragment {
         inizialite();
         inputAdapter();
         escuchaBoton();
-
         return view;
     }
 
@@ -73,7 +73,15 @@ public class HotelesFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        inflater.inflate(R.menu.menu_cambiar, menu);
+        if (position==Surface.ROTATION_0 || position==Surface.ROTATION_180) {
+            inflater.inflate(R.menu.menu_cambiar, menu);
+            MenuItem item = menu.findItem(R.id.action_cambiar);
+            if (modo==1){
+                item.setIcon(R.drawable.botongrid);
+            }else {
+                item.setIcon(R.drawable.botonlista);
+            }
+        }
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -86,7 +94,24 @@ public class HotelesFragment extends Fragment {
 
         if (id == R.id.action_cambiar) {
 
-            Toast.makeText(getContext(), "si cambia", Toast.LENGTH_SHORT).show();
+            switch (modo){
+                case 1:
+                    modo=2;
+                    editor.putInt("modo",2);
+                    editor.commit();
+                    inputAdapter();
+                    item.setIcon(R.drawable.botonlista);
+                    break;
+                case 2:
+                    modo=1;
+                    editor.putInt("modo",1);
+                    editor.commit();
+                    inputAdapter();
+                    item.setIcon(R.drawable.botongrid);
+                    break;
+
+
+            }
 
             return true;
         }
@@ -104,6 +129,7 @@ public class HotelesFragment extends Fragment {
         entrar=0;
         preferences = getActivity().getSharedPreferences("vista", Context.MODE_PRIVATE);
         modo = preferences.getInt("modo",1);
+        editor = preferences.edit();
     }
 
     //Método para ingresar el adapter al
@@ -126,7 +152,7 @@ public class HotelesFragment extends Fragment {
                     }
                 });
             }else {
-                item = R.layout.item_list;
+                item = R.layout.item_grid;
                 AdapterT adapterT = new AdapterT(lugaresList,item,getContext());
                 recyclerView.setAdapter(adapterT);
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false));

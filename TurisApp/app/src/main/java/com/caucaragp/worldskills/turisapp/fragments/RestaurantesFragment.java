@@ -11,6 +11,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +42,7 @@ public class RestaurantesFragment extends Fragment {
     int modo;
     int item;
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     View view;
     int entrar=0;
 
@@ -48,11 +52,61 @@ public class RestaurantesFragment extends Fragment {
 
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        if (position==Surface.ROTATION_0 || position==Surface.ROTATION_180) {
+            inflater.inflate(R.menu.menu_cambiar, menu);
+            MenuItem item = menu.findItem(R.id.action_cambiar);
+            if (modo==1){
+                item.setIcon(R.drawable.botongrid);
+            }else {
+                item.setIcon(R.drawable.botonlista);
+            }
+        }
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_cambiar) {
+
+            switch (modo){
+                case 1:
+                    modo=2;
+                    editor.putInt("modo",2);
+                    editor.commit();
+                    inputAdapter();
+                    item.setIcon(R.drawable.botonlista);
+                    break;
+                case 2:
+                    modo=1;
+                    editor.putInt("modo",1);
+                    editor.commit();
+                    inputAdapter();
+                    item.setIcon(R.drawable.botongrid);
+                    break;
+
+
+            }
+
+            return true;
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -75,6 +129,7 @@ public class RestaurantesFragment extends Fragment {
         entrar=0;
         preferences = getActivity().getSharedPreferences("vista", Context.MODE_PRIVATE);
         modo = preferences.getInt("modo",1);
+        editor = preferences.edit();
     }
 
     //Método para ingresar el adapter al
@@ -97,7 +152,7 @@ public class RestaurantesFragment extends Fragment {
                     }
                 });
             }else {
-                item = R.layout.item_list;
+                item = R.layout.item_grid;
                 AdapterT adapterT = new AdapterT(lugaresList,item,getContext());
                 recyclerView.setAdapter(adapterT);
                 recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false));
